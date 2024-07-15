@@ -28,13 +28,13 @@ public class Posts {
 	@Column(length = 255, nullable = false)
 	private String  nickName;
 
-	@Column(columnDefinition = "TIMESTAMP", nullable = false)
+	@Column(columnDefinition = "Timestamp", nullable = false)
 	private Date releaseDate;
 
-	@Column(columnDefinition = "TIMESTAMP", nullable = false)
+	@Column(columnDefinition = "Timestamp", nullable = false)
 	private Date modificationDate;
 
-	@Column(columnDefinition = "INT", nullable = false)
+	@Column(columnDefinition = "Integer", nullable = false)
 	private Integer postNumber;
 
 	@Builder
