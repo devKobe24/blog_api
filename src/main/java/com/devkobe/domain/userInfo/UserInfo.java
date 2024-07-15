@@ -1,14 +1,15 @@
 package com.devkobe.domain.userInfo;
 
-import com.devkobe.domain.postInfo.PostInfo;
 import com.devkobe.domain.posts.Posts;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,21 +23,20 @@ public class UserInfo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userInfoId;
 
-	@Column(length = 255, nullable = false)
+	@Column(nullable = false)
 	private String name;
 
-	@Column(length = 255, nullable = false)
+	@Column(nullable = false)
 	private String email;
 
-	@Column(length = 500, nullable = false)
+	@Column(nullable = false)
 	private String profileImage;
 
-	@Column(length = 255, nullable = false)
+	@Column(nullable = false)
 	private String nickName;
 
-	@ManyToOne
-	@JoinColumn(name = "postId", nullable = false)
-	private Posts posts;
+	@OneToMany(mappedBy = "userInfo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Posts> posts;
 
 	@Builder
 	public UserInfo(String name, String email, String profileImage, String nickName) {
