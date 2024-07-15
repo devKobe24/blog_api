@@ -1,9 +1,11 @@
 package com.devkobe.domain.posts;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.catchException;
 
-import java.sql.Timestamp;
+import com.devkobe.domain.dateInfo.DateInfoRepository;
+import com.devkobe.domain.userInfo.UserInfo;
+import com.devkobe.domain.userInfo.UserInfoRepository;
+import jakarta.transaction.Transactional;
 import java.text.ParseException;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
@@ -20,30 +22,32 @@ public class PostsRepositoryTest {
 	@Autowired
 	PostsRepository postsRepository;
 
+	@Autowired
+	UserInfoRepository userInfoRepository;
+
 	@AfterEach
 	public void cleanup() {
 		postsRepository.deleteAll();
+		userInfoRepository.deleteAll();
 	}
 
 	@Test
+	@Transactional
 	public void 게시글저장_불러오기() throws ParseException {
 		// given
 		String title = "게시글 제목";
 		String content = "게시글 본문";
 		String nickName = "빙구당";
-		Timestamp releaseDate = new Timestamp(100000);
-		Timestamp modificationDate = new Timestamp(100000);
-
 		Integer postNumber = 1;
+		UserInfo userInfo = userInfoRepository.save(new UserInfo("이름", "이메일", "profile_image_url", "빙구당"));
 
 		postsRepository.save(Posts.builder()
-				.title(title)
-				.content(content)
-				.nickName(nickName)
-				.releaseDate(releaseDate)
-				.modificationDate(modificationDate)
-				.postNumber(postNumber)
-				.build());
+		                          .title(title)
+		                          .content(content)
+		                          .nickName(nickName)
+		                          .postNumber(postNumber)
+		                          .userInfo(userInfo)
+		                          .build());
 
 		// when
 		List<Posts> postsList = postsRepository.findAll();
@@ -53,7 +57,7 @@ public class PostsRepositoryTest {
 		assertThat(posts.getTitle()).isEqualTo(title);
 		assertThat(posts.getContent()).isEqualTo(content);
 		assertThat(posts.getNickName()).isEqualTo(nickName);
-		assertThat(posts.getReleaseDate()).isEqualTo(releaseDate);
 		assertThat(posts.getPostNumber()).isEqualTo(postNumber);
+		assertThat(posts.getUserInfo()).isEqualTo(userInfo);
 	}
 }
