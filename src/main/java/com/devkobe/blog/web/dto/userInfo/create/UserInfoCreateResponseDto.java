@@ -1,5 +1,6 @@
 package com.devkobe.blog.web.dto.userInfo.create;
 
+import com.devkobe.blog.domain.UserInfo;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -12,11 +13,11 @@ public class UserInfoCreateResponseDto {
 	private String nickName;
 
 	@Builder
-	public UserInfoCreateResponseDto(Long id, String name, String email, String profileImage, String nickName) {
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.profileImage = profileImage;
-		this.nickName = nickName;
+	public UserInfoCreateResponseDto(UserInfo entity) {
+		this.id = entity.getId();
+		this.name = entity.getName();
+		this.email = entity.getEmail();
+		this.profileImage = entity.getProfileImage();
+		this.nickName = entity.getNickName();
 	}
 }
