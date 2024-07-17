@@ -4,6 +4,7 @@ import com.devkobe.blog.domain.UserInfo;
 import com.devkobe.blog.repository.UserInfoRepository;
 import com.devkobe.blog.web.dto.UserInfoRequestDto;
 import com.devkobe.blog.web.dto.UserInfoResponseDto;
+import com.devkobe.blog.web.dto.UserInfoUpdateRequestDto;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -38,7 +39,7 @@ public class UserInfoService {
 	}
 
 	@Transactional
-	public Long update(Long id, UserInfoRequestDto requestDto) {
+	public Long update(Long id, UserInfoUpdateRequestDto requestDto) {
 		UserInfo userInfo = userInfoRepository.findById(id)
 		                                      .orElseThrow(() -> new IllegalArgumentException("Invalid userInfoId ===========>>>>>>>> " + id));
 
