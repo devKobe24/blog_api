@@ -1,6 +1,7 @@
 package com.devkobe.blog.web.controller;
 
 import com.devkobe.blog.service.UserInfoService;
+import com.devkobe.blog.web.dto.userInfo.UserInfoCreateRequestDto;
 import com.devkobe.blog.web.dto.userInfo.UserInfoRequestDto;
 import com.devkobe.blog.web.dto.userInfo.UserInfoResponseDto;
 import com.devkobe.blog.web.dto.userInfo.UserInfoUpdateRequestDto;
@@ -17,7 +18,7 @@ public class UserInfoController {
 	private final UserInfoService userInfoService;
 
 	@PostMapping
-	public Long save(@RequestBody UserInfoRequestDto requestDto) {
+	public Long save(@RequestBody UserInfoCreateRequestDto requestDto) {
 		return userInfoService.save(requestDto);
 	}
 
