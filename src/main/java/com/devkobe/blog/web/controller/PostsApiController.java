@@ -1,11 +1,10 @@
 package com.devkobe.blog.web.controller;
 
 import com.devkobe.blog.service.PostsService;
-import com.devkobe.blog.web.dto.posts.PostsResponseDto;
-import com.devkobe.blog.web.dto.posts.PostsSaveRequestDto;
-import com.devkobe.blog.web.dto.posts.PostsUpdateRequestDto;
+import com.devkobe.blog.web.dto.posts.update.PostsUpdateRequestDto;
 import com.devkobe.blog.web.dto.posts.create.PostsCreateRequestDto;
 import com.devkobe.blog.web.dto.posts.read.PostsReadResponseDto;
+import com.devkobe.blog.web.dto.posts.update.PostsUpdateResponseDto;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -45,7 +44,7 @@ public class PostsApiController {
 	}
 
 	@PutMapping("/{id}")
-	public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto) {
+	public PostsUpdateResponseDto update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto) {
 		return postsService.update(id, requestDto);
 	}
 }

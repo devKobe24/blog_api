@@ -4,11 +4,10 @@ import com.devkobe.blog.domain.Posts;
 import com.devkobe.blog.domain.UserInfo;
 import com.devkobe.blog.repository.PostsRepository;
 import com.devkobe.blog.repository.UserInfoRepository;
-import com.devkobe.blog.web.dto.posts.PostsResponseDto;
-import com.devkobe.blog.web.dto.posts.PostsSaveRequestDto;
-import com.devkobe.blog.web.dto.posts.PostsUpdateRequestDto;
+import com.devkobe.blog.web.dto.posts.update.PostsUpdateRequestDto;
 import com.devkobe.blog.web.dto.posts.create.PostsCreateRequestDto;
 import com.devkobe.blog.web.dto.posts.read.PostsReadResponseDto;
+import com.devkobe.blog.web.dto.posts.update.PostsUpdateResponseDto;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -59,13 +58,13 @@ public class PostsService {
 	}
 
 	@Transactional
-	public Long update(Long id, PostsUpdateRequestDto requestDto) {
+	public PostsUpdateResponseDto update(Long id, PostsUpdateRequestDto requestDto) {
 		Posts post = postsRepository.findById(id)
 		                            .orElseThrow(() -> new IllegalArgumentException("Invalid postId ================>>>>>>> " + id));
 
 		post.update(requestDto.getTitle(), requestDto.getContent(), requestDto.getNickName(), requestDto.getPostNumber(), requestDto.getAdditionalInfo());
 
-		return post.getId();
+		return new PostsUpdateResponseDto(post);
 	}
 
 	@Transactional(readOnly = true)
