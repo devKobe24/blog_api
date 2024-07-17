@@ -1,6 +1,7 @@
 package com.devkobe.blog.web.controller;
 
 import com.devkobe.blog.service.PostsService;
+import com.devkobe.blog.web.dto.posts.create.PostsCreateResponseDto;
 import com.devkobe.blog.web.dto.posts.update.PostsUpdateRequestDto;
 import com.devkobe.blog.web.dto.posts.create.PostsCreateRequestDto;
 import com.devkobe.blog.web.dto.posts.read.PostsReadResponseDto;
@@ -24,7 +25,7 @@ public class PostsApiController {
 	private final PostsService postsService;
 
 	@PostMapping
-	public Long save(@RequestBody PostsCreateRequestDto requestDto) {
+	public PostsCreateResponseDto save(@RequestBody PostsCreateRequestDto requestDto) {
 		return postsService.save(requestDto);
 	}
 

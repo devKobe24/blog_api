@@ -4,6 +4,7 @@ import com.devkobe.blog.domain.Posts;
 import com.devkobe.blog.domain.UserInfo;
 import com.devkobe.blog.repository.PostsRepository;
 import com.devkobe.blog.repository.UserInfoRepository;
+import com.devkobe.blog.web.dto.posts.create.PostsCreateResponseDto;
 import com.devkobe.blog.web.dto.posts.update.PostsUpdateRequestDto;
 import com.devkobe.blog.web.dto.posts.create.PostsCreateRequestDto;
 import com.devkobe.blog.web.dto.posts.read.PostsReadResponseDto;
@@ -22,7 +23,7 @@ public class PostsService {
 	private final UserInfoRepository userInfoRepository;
 
 	@Transactional
-	public Long save(PostsCreateRequestDto requestDto) {
+	public PostsCreateResponseDto save(PostsCreateRequestDto requestDto) {
 		UserInfo userInfo;
 		if (requestDto.getUserInfoId() != null) {
 			userInfo = userInfoRepository.findById(requestDto.getUserInfoId())
@@ -40,7 +41,7 @@ public class PostsService {
 
 		Posts post = requestDto.toEntity(userInfo);
 		postsRepository.save(post);
-		return post.getId();
+		return new PostsCreateResponseDto(post);
 	}
 
 	@Transactional
