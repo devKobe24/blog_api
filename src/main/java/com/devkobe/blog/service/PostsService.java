@@ -7,6 +7,7 @@ import com.devkobe.blog.repository.UserInfoRepository;
 import com.devkobe.blog.web.dto.posts.PostsResponseDto;
 import com.devkobe.blog.web.dto.posts.PostsSaveRequestDto;
 import com.devkobe.blog.web.dto.posts.PostsUpdateRequestDto;
+import com.devkobe.blog.web.dto.posts.create.PostsCreateRequestDto;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +22,7 @@ public class PostsService {
 	private final UserInfoRepository userInfoRepository;
 
 	@Transactional
-	public Long save(PostsSaveRequestDto requestDto) {
+	public Long save(PostsCreateRequestDto requestDto) {
 		UserInfo userInfo;
 		if (requestDto.getUserInfoId() != null) {
 			userInfo = userInfoRepository.findById(requestDto.getUserInfoId())

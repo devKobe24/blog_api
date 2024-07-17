@@ -4,6 +4,7 @@ import com.devkobe.blog.service.PostsService;
 import com.devkobe.blog.web.dto.posts.PostsResponseDto;
 import com.devkobe.blog.web.dto.posts.PostsSaveRequestDto;
 import com.devkobe.blog.web.dto.posts.PostsUpdateRequestDto;
+import com.devkobe.blog.web.dto.posts.create.PostsCreateRequestDto;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,7 +24,7 @@ public class PostsApiController {
 	private final PostsService postsService;
 
 	@PostMapping
-	public Long save(@RequestBody PostsSaveRequestDto requestDto) {
+	public Long save(@RequestBody PostsCreateRequestDto requestDto) {
 		return postsService.save(requestDto);
 	}
 
