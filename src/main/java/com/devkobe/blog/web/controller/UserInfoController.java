@@ -4,6 +4,7 @@ import com.devkobe.blog.service.UserInfoService;
 import com.devkobe.blog.web.dto.userInfo.UserInfoRequestDto;
 import com.devkobe.blog.web.dto.userInfo.UserInfoResponseDto;
 import com.devkobe.blog.web.dto.userInfo.UserInfoUpdateRequestDto;
+import com.devkobe.blog.web.dto.userInfo.UserInfoUpdateResponseDto;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,7 @@ public class UserInfoController {
 	}
 
 	@PutMapping("/{id}")
-	public Long update(@PathVariable Long id, @RequestBody UserInfoUpdateRequestDto requestDto) {
+	public UserInfoUpdateResponseDto update(@PathVariable Long id, @RequestBody UserInfoUpdateRequestDto requestDto) {
 		return userInfoService.update(id, requestDto);
 	}
 
