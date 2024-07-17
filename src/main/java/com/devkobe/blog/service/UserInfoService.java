@@ -2,6 +2,7 @@ package com.devkobe.blog.service;
 
 import com.devkobe.blog.domain.UserInfo;
 import com.devkobe.blog.repository.UserInfoRepository;
+import com.devkobe.blog.web.dto.userInfo.UserInfoCreateRequestDto;
 import com.devkobe.blog.web.dto.userInfo.UserInfoRequestDto;
 import com.devkobe.blog.web.dto.userInfo.UserInfoResponseDto;
 import com.devkobe.blog.web.dto.userInfo.UserInfoUpdateRequestDto;
@@ -19,7 +20,7 @@ public class UserInfoService {
 	private final UserInfoRepository userInfoRepository;
 
 	@Transactional
-	public Long save(UserInfoRequestDto requestDto) {
+	public Long save(UserInfoCreateRequestDto requestDto) {
 		UserInfo userInfo = requestDto.toEntity();
 		userInfoRepository.save(userInfo);
 		return userInfo.getId();
