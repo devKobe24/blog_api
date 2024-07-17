@@ -1,4 +1,4 @@
-package com.devkobe.blog.web.dto;
+package com.devkobe.blog.web.dto.postInfo;
 
 import com.devkobe.blog.domain.PostInfo;
 import com.devkobe.blog.domain.Posts;

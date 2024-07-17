@@ -1,4 +1,4 @@
-package com.devkobe.blog.web.dto;
+package com.devkobe.blog.web.dto.posts;
 
 import lombok.Builder;
 import lombok.Getter;

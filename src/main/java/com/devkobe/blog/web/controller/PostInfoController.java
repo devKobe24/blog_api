@@ -1,9 +1,9 @@
 package com.devkobe.blog.web.controller;
 
 import com.devkobe.blog.service.PostInfoService;
-import com.devkobe.blog.web.dto.PostInfoRequestDto;
-import com.devkobe.blog.web.dto.PostInfoResponseDto;
-import com.devkobe.blog.web.dto.PostInfoUpdateRequestDto;
+import com.devkobe.blog.web.dto.postInfo.PostInfoRequestDto;
+import com.devkobe.blog.web.dto.postInfo.PostInfoResponseDto;
+import com.devkobe.blog.web.dto.postInfo.PostInfoUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

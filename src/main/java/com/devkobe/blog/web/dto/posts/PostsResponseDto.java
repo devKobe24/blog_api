@@ -1,6 +1,7 @@
-package com.devkobe.blog.web.dto;
+package com.devkobe.blog.web.dto.posts;
 
 import com.devkobe.blog.domain.Posts;
+import com.devkobe.blog.web.dto.userInfo.UserInfoResponseDto;
 import lombok.Getter;
 
 @Getter

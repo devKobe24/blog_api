@@ -1,4 +1,4 @@
-package com.devkobe.blog.web.dto;
+package com.devkobe.blog.web.dto.userInfo;
 
 import com.devkobe.blog.domain.UserInfo;
 import lombok.Getter;

@@ -1,9 +1,9 @@
 package com.devkobe.blog.web.controller;
 
 import com.devkobe.blog.service.UserInfoService;
-import com.devkobe.blog.web.dto.UserInfoRequestDto;
-import com.devkobe.blog.web.dto.UserInfoResponseDto;
-import com.devkobe.blog.web.dto.UserInfoUpdateRequestDto;
+import com.devkobe.blog.web.dto.userInfo.UserInfoRequestDto;
+import com.devkobe.blog.web.dto.userInfo.UserInfoResponseDto;
+import com.devkobe.blog.web.dto.userInfo.UserInfoUpdateRequestDto;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

@@ -1,9 +1,9 @@
 package com.devkobe.blog.web.controller;
 
 import com.devkobe.blog.service.PostsService;
-import com.devkobe.blog.web.dto.PostsResponseDto;
-import com.devkobe.blog.web.dto.PostsSaveRequestDto;
-import com.devkobe.blog.web.dto.PostsUpdateRequestDto;
+import com.devkobe.blog.web.dto.posts.PostsResponseDto;
+import com.devkobe.blog.web.dto.posts.PostsSaveRequestDto;
+import com.devkobe.blog.web.dto.posts.PostsUpdateRequestDto;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;

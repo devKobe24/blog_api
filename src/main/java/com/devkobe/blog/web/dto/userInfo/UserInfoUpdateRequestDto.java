@@ -1,4 +1,4 @@
-package com.devkobe.blog.web.dto;
+package com.devkobe.blog.web.dto.userInfo;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -19,5 +19,4 @@ public class UserInfoUpdateRequestDto {
 		this.profileImage = profileImage;
 		this.nickName = nickName;
 	}
-
 }

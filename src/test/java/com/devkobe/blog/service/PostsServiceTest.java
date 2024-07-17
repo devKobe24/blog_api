@@ -8,7 +8,7 @@ import com.devkobe.blog.domain.Posts;
 import com.devkobe.blog.domain.UserInfo;
 import com.devkobe.blog.repository.PostsRepository;
 import com.devkobe.blog.repository.UserInfoRepository;
-import com.devkobe.blog.web.dto.PostsSaveRequestDto;
+import com.devkobe.blog.web.dto.posts.PostsSaveRequestDto;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

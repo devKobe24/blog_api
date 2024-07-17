@@ -2,9 +2,9 @@ package com.devkobe.blog.service;
 
 import com.devkobe.blog.domain.UserInfo;
 import com.devkobe.blog.repository.UserInfoRepository;
-import com.devkobe.blog.web.dto.UserInfoRequestDto;
-import com.devkobe.blog.web.dto.UserInfoResponseDto;
-import com.devkobe.blog.web.dto.UserInfoUpdateRequestDto;
+import com.devkobe.blog.web.dto.userInfo.UserInfoRequestDto;
+import com.devkobe.blog.web.dto.userInfo.UserInfoResponseDto;
+import com.devkobe.blog.web.dto.userInfo.UserInfoUpdateRequestDto;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;

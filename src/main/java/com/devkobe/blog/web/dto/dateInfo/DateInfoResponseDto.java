@@ -1,4 +1,4 @@
-package com.devkobe.blog.web.dto;
+package com.devkobe.blog.web.dto.dateInfo;
 
 import com.devkobe.blog.domain.DateInfo;
 import java.sql.Timestamp;
