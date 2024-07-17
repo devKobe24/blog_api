@@ -5,6 +5,7 @@ import com.devkobe.blog.web.dto.posts.PostsResponseDto;
 import com.devkobe.blog.web.dto.posts.PostsSaveRequestDto;
 import com.devkobe.blog.web.dto.posts.PostsUpdateRequestDto;
 import com.devkobe.blog.web.dto.posts.create.PostsCreateRequestDto;
+import com.devkobe.blog.web.dto.posts.read.PostsReadResponseDto;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,7 +30,7 @@ public class PostsApiController {
 	}
 
 	@GetMapping("/{id}")
-	public PostsResponseDto findById(@PathVariable Long id) {
+	public PostsReadResponseDto findById(@PathVariable Long id) {
 		return postsService.findById(id);
 	}
 
@@ -39,7 +40,7 @@ public class PostsApiController {
 	}
 
 	@GetMapping
-	public List<PostsResponseDto> findAll() {
+	public List<PostsReadResponseDto> findAll() {
 		return postsService.findAll();
 	}
 

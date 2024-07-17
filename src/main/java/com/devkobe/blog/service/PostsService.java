@@ -8,6 +8,7 @@ import com.devkobe.blog.web.dto.posts.PostsResponseDto;
 import com.devkobe.blog.web.dto.posts.PostsSaveRequestDto;
 import com.devkobe.blog.web.dto.posts.PostsUpdateRequestDto;
 import com.devkobe.blog.web.dto.posts.create.PostsCreateRequestDto;
+import com.devkobe.blog.web.dto.posts.read.PostsReadResponseDto;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -51,9 +52,9 @@ public class PostsService {
 	}
 
 	@Transactional(readOnly = true)
-	public List<PostsResponseDto> findAll() {
+	public List<PostsReadResponseDto> findAll() {
 		return postsRepository.findAll().stream()
-		                      .map(PostsResponseDto::new)
+		                      .map(PostsReadResponseDto::new)
 		                      .collect(Collectors.toList());
 	}
 
@@ -68,10 +69,10 @@ public class PostsService {
 	}
 
 	@Transactional(readOnly = true)
-	public PostsResponseDto findById(Long id) {
+	public PostsReadResponseDto findById(Long id) {
 		Posts post = postsRepository.findById(id)
 		                            .orElseThrow(() -> new IllegalArgumentException("Invalid postId ==========>>>>>>>>>>>> " + id));
-		return new PostsResponseDto(post);
+		return new PostsReadResponseDto(post);
 	}
 }
 
