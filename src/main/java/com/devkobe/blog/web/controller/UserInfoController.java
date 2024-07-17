@@ -1,4 +1,4 @@
-package com.devkobe.blog.web;
+package com.devkobe.blog.web.controller;
 
 import com.devkobe.blog.service.UserInfoService;
 import com.devkobe.blog.web.dto.UserInfoRequestDto;
