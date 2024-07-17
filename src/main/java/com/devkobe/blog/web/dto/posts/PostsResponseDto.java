@@ -1,7 +1,7 @@
 package com.devkobe.blog.web.dto.posts;
 
 import com.devkobe.blog.domain.Posts;
-import com.devkobe.blog.web.dto.userInfo.UserInfoResponseDto;
+import com.devkobe.blog.web.dto.userInfo.read.UserInfoReadResponseDto;
 import lombok.Getter;
 
 @Getter
@@ -13,7 +13,7 @@ public class PostsResponseDto {
 	private String nickName;
 	private Integer postNumber;
 	private String additionalInfo;
-	private UserInfoResponseDto userInfo;
+	private UserInfoReadResponseDto userInfo;
 
 	public PostsResponseDto(Posts entity) {
 		this.id = entity.getId();
@@ -22,7 +22,7 @@ public class PostsResponseDto {
 		this.nickName = entity.getNickName();
 		this.postNumber = entity.getPostNumber();
 		this.additionalInfo = entity.getAdditionalInfo();
-		this.userInfo = new UserInfoResponseDto(entity.getUserInfo());
+		this.userInfo = new UserInfoReadResponseDto(entity.getUserInfo());
 	}
 }
 

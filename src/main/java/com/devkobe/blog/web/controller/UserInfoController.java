@@ -2,7 +2,7 @@ package com.devkobe.blog.web.controller;
 
 import com.devkobe.blog.service.UserInfoService;
 import com.devkobe.blog.web.dto.userInfo.create.UserInfoCreateRequestDto;
-import com.devkobe.blog.web.dto.userInfo.UserInfoResponseDto;
+import com.devkobe.blog.web.dto.userInfo.read.UserInfoReadResponseDto;
 import com.devkobe.blog.web.dto.userInfo.update.UserInfoUpdateRequestDto;
 import com.devkobe.blog.web.dto.userInfo.update.UserInfoUpdateResponseDto;
 import java.util.List;
@@ -22,12 +22,12 @@ public class UserInfoController {
 	}
 
 	@GetMapping("/{id}")
-	public UserInfoResponseDto findById(@PathVariable Long id) {
+	public UserInfoReadResponseDto findById(@PathVariable Long id) {
 		return userInfoService.findById(id);
 	}
 
 	@GetMapping
-	public List<UserInfoResponseDto> findAll() {
+	public List<UserInfoReadResponseDto> findAll() {
 		return userInfoService.findAll();
 	}
 

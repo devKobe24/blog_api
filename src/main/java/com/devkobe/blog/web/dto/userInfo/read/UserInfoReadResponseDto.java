@@ -1,7 +1,6 @@
 package com.devkobe.blog.web.dto.userInfo.read;
 
 import com.devkobe.blog.domain.UserInfo;
-import com.devkobe.blog.web.dto.userInfo.UserInfoResponseDto;
 import lombok.Builder;
 import lombok.Getter;
 

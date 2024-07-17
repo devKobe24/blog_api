@@ -3,7 +3,7 @@ package com.devkobe.blog.service;
 import com.devkobe.blog.domain.UserInfo;
 import com.devkobe.blog.repository.UserInfoRepository;
 import com.devkobe.blog.web.dto.userInfo.create.UserInfoCreateRequestDto;
-import com.devkobe.blog.web.dto.userInfo.UserInfoResponseDto;
+import com.devkobe.blog.web.dto.userInfo.read.UserInfoReadResponseDto;
 import com.devkobe.blog.web.dto.userInfo.update.UserInfoUpdateRequestDto;
 import com.devkobe.blog.web.dto.userInfo.update.UserInfoUpdateResponseDto;
 import java.util.List;
@@ -26,16 +26,16 @@ public class UserInfoService {
 	}
 
 	@Transactional(readOnly = true)
-	public UserInfoResponseDto findById(Long id) {
+	public UserInfoReadResponseDto findById(Long id) {
 		UserInfo userInfo = userInfoRepository.findById(id)
 		                                      .orElseThrow(() -> new IllegalArgumentException("invalid userInfoId ===========>>>>>> " + id));
-		return new UserInfoResponseDto(userInfo);
+		return new UserInfoReadResponseDto(userInfo);
 	}
 
 	@Transactional(readOnly = true)
-	public List<UserInfoResponseDto> findAll() {
+	public List<UserInfoReadResponseDto> findAll() {
 		return userInfoRepository.findAll().stream()
-		                         .map(UserInfoResponseDto::new)
+		                         .map(UserInfoReadResponseDto::new)
 		                         .collect(Collectors.toList());
 	}
 
