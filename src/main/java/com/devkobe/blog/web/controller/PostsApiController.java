@@ -2,6 +2,7 @@ package com.devkobe.blog.web.controller;
 
 import com.devkobe.blog.service.PostsService;
 import com.devkobe.blog.web.dto.posts.create.PostsCreateResponseDto;
+import com.devkobe.blog.web.dto.posts.read.PostsReadRequestDto;
 import com.devkobe.blog.web.dto.posts.update.PostsUpdateRequestDto;
 import com.devkobe.blog.web.dto.posts.create.PostsCreateRequestDto;
 import com.devkobe.blog.web.dto.posts.read.PostsReadResponseDto;
@@ -34,19 +35,24 @@ public class PostsApiController {
 		return postsService.findById(id);
 	}
 
-	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Long id) {
-		postsService.delete(id);
-	}
-
 	@GetMapping
 	public List<PostsReadResponseDto> findAll() {
 		return postsService.findAll();
 	}
 
+	@GetMapping("/search")
+	public List<PostsReadResponseDto> findByCriteria(PostsReadRequestDto requestDto) {
+		return postsService.findByCriteria(requestDto);
+	}
+
 	@PutMapping("/{id}")
 	public PostsUpdateResponseDto update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto) {
 		return postsService.update(id, requestDto);
+	}
+
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable Long id) {
+		postsService.delete(id);
 	}
 }
 
