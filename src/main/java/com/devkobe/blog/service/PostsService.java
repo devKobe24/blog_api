@@ -3,8 +3,10 @@ package com.devkobe.blog.service;
 import com.devkobe.blog.domain.Posts;
 import com.devkobe.blog.domain.UserInfo;
 import com.devkobe.blog.repository.PostsRepository;
+import com.devkobe.blog.repository.PostsSpecification;
 import com.devkobe.blog.repository.UserInfoRepository;
 import com.devkobe.blog.web.dto.posts.create.PostsCreateResponseDto;
+import com.devkobe.blog.web.dto.posts.read.PostsReadRequestDto;
 import com.devkobe.blog.web.dto.posts.update.PostsUpdateRequestDto;
 import com.devkobe.blog.web.dto.posts.create.PostsCreateRequestDto;
 import com.devkobe.blog.web.dto.posts.read.PostsReadResponseDto;
@@ -12,6 +14,7 @@ import com.devkobe.blog.web.dto.posts.update.PostsUpdateResponseDto;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -73,6 +76,24 @@ public class PostsService {
 		Posts post = postsRepository.findById(id)
 		                            .orElseThrow(() -> new IllegalArgumentException("Invalid postId ==========>>>>>>>>>>>> " + id));
 		return new PostsReadResponseDto(post);
+	}
+
+	// 조건 검색
+	@Transactional(readOnly = true)
+	public List<PostsReadResponseDto> findByCriteria(PostsReadRequestDto requestDto) {
+		// 이곳에 적절한 쿼리 또는 필터링 로직 작성
+
+		Specification<Posts> spec = Specification.where(PostsSpecification.withTitle(requestDto.getTitle()))
+				.and(PostsSpecification.withContent(requestDto.getContent()))
+				.and(PostsSpecification.withNickName(requestDto.getNickName()))
+				.and(PostsSpecification.withPostNumber(requestDto.getPostNumber()))
+				.and(PostsSpecification.withAdditionalInfo(requestDto.getAdditionalInfo()))
+				.and(PostsSpecification.withUserInfoId(requestDto.getUserInfoId()));
+
+		List<Posts> posts = postsRepository.findAll(spec);
+		return posts.stream()
+				.map(PostsReadResponseDto::new)
+				.collect(Collectors.toList());
 	}
 }
 
