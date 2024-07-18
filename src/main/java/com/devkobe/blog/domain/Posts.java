@@ -48,10 +48,6 @@ public class Posts {
 
 	@OneToOne(mappedBy = "posts", cascade = CascadeType.ALL)
 	@JsonManagedReference
-	private PostInfo postInfo;
-
-	@OneToOne(mappedBy = "posts", cascade = CascadeType.ALL)
-	@JsonManagedReference
 	private DateInfo dateInfo;
 
 	@Builder
@@ -67,13 +63,6 @@ public class Posts {
 		this.userInfo = userInfo;
 		if (!userInfo.getPosts().contains(this)) {
 			userInfo.getPosts().add(this);
-		}
-	}
-
-	public void setPostInfo(PostInfo postInfo) {
-		this.postInfo = postInfo;
-		if (postInfo.getPosts() != this) {
-			postInfo.setPosts(this);
 		}
 	}
 

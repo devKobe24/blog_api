@@ -1,7 +1,6 @@
 package com.devkobe.blog.web.dto.posts.create;
 
 import com.devkobe.blog.domain.DateInfo;
-import com.devkobe.blog.domain.PostInfo;
 import com.devkobe.blog.domain.Posts;
 import com.devkobe.blog.domain.UserInfo;
 import java.sql.Timestamp;
@@ -44,18 +43,12 @@ public class PostsCreateRequestDto {
 		                   .additionalInfo(additionalInfo)
 		                   .build();
 
-		PostInfo postInfo = PostInfo.builder()
-		                            .additionalInfo(additionalInfo)
-		                            .posts(post)
-		                            .build();
-
 		DateInfo dateInfo = DateInfo.builder()
 		                            .releaseDate(new Timestamp(System.currentTimeMillis()))
 		                            .modificationDate(new Timestamp(System.currentTimeMillis()))
 		                            .posts(post)
 		                            .build();
 
-		post.setPostInfo(postInfo);
 		post.setDateInfo(dateInfo);
 		post.setUserInfo(userInfo);
 
