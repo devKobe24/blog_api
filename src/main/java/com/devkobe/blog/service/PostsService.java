@@ -6,6 +6,7 @@ import com.devkobe.blog.repository.PostsRepository;
 import com.devkobe.blog.repository.PostsSpecification;
 import com.devkobe.blog.repository.UserInfoRepository;
 import com.devkobe.blog.web.dto.posts.create.PostsCreateResponseDto;
+import com.devkobe.blog.web.dto.posts.delete.PostsDeleteResponseDto;
 import com.devkobe.blog.web.dto.posts.read.PostsReadRequestDto;
 import com.devkobe.blog.web.dto.posts.update.PostsUpdateRequestDto;
 import com.devkobe.blog.web.dto.posts.create.PostsCreateRequestDto;
@@ -30,7 +31,9 @@ public class PostsService {
 		UserInfo userInfo;
 		if (requestDto.getUserInfoId() != null) {
 			userInfo = userInfoRepository.findById(requestDto.getUserInfoId())
-			                             .orElseThrow(() -> new IllegalArgumentException("Invalid userInfoId ==========>>>>>>>>>> " + requestDto.getUserInfoId()));
+			                             .orElseThrow(() -> new IllegalArgumentException(
+					                             "Invalid userInfoId ==========>>>>>>>>>> "
+							                             + requestDto.getUserInfoId()));
 		} else {
 			userInfo = UserInfo.builder()
 			                   .name(requestDto.getName())
@@ -48,10 +51,23 @@ public class PostsService {
 	}
 
 	@Transactional
-	public void delete(Long id) {
-		Posts post = postsRepository.findById(id)
-		                            .orElseThrow(() -> new IllegalArgumentException("Invalid postId =============>>>>>>>>>>>>>>> " + id));
-		postsRepository.delete(post);
+	public PostsDeleteResponseDto delete(Long id) {
+		PostsDeleteResponseDto responseDto;
+		try {
+			Posts post = postsRepository.findById(id)
+			                            .orElseThrow(() -> new IllegalArgumentException("Invalid postId ================>>>>>>> " + id));
+			postsRepository.delete(post);
+			responseDto = PostsDeleteResponseDto.builder()
+			                                    .id(id)
+			                                    .status("SUCCESS TO DELETE")
+			                                    .build();
+		} catch (Exception e) {
+			responseDto = PostsDeleteResponseDto.builder()
+			                                    .id(id)
+			                                    .status("FAIL TO DELETE")
+			                                    .build();
+		}
+		return responseDto;
 	}
 
 	@Transactional(readOnly = true)
