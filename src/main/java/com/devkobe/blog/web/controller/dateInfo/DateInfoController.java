@@ -3,6 +3,8 @@ package com.devkobe.blog.web.controller.dateInfo;
 import com.devkobe.blog.domain.dateInfo.DateInfo;
 import com.devkobe.blog.service.dateInfo.DateInfoService;
 import com.devkobe.blog.web.dto.dateInfo.DateInfoResponseDto;
+import com.devkobe.blog.web.dto.dateInfo.create.DateInfoCreateRequestDto;
+import com.devkobe.blog.web.dto.dateInfo.create.DateInfoCreateResponseDto;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,8 +25,11 @@ public class DateInfoController {
 
 	// CREATE
 	@PostMapping
-	public Long save(@RequestBody DateInfo dateInfo) {
-		return dateInfoService.save(dateInfo);
+	public DateInfoCreateResponseDto save(@RequestBody DateInfoCreateRequestDto requestDto) {
+		DateInfo dateInfo = requestDto.toEntity();
+		Long id = dateInfoService.save(dateInfo);
+		DateInfo savedDateInfo = dateInfoService.findById(id);
+		return new DateInfoCreateResponseDto(savedDateInfo);
 	}
 
 	// READ

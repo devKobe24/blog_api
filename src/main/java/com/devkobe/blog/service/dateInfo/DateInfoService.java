@@ -30,10 +30,9 @@ public class DateInfoService {
 	}
 
 	@Transactional(readOnly = true)
-	public DateInfoResponseDto findById(Long id) {
-		DateInfo dateInfo = dateInfoRepository.findById(id)
-		                                      .orElseThrow(() -> new IllegalArgumentException("Invalid dateInfo ID: " + id));
-		return new DateInfoResponseDto(dateInfo);
+	public DateInfo findById(Long id) {
+		return dateInfoRepository.findById(id)
+		                         .orElseThrow(() -> new IllegalArgumentException("Invalid dateInfo ID: " + id));
 	}
 
 	// UPDATE
@@ -56,5 +55,4 @@ public class DateInfoService {
 				.orElseThrow(() -> new IllegalArgumentException("Invalid dateInfo ID: " + id));
 		dateInfoRepository.delete(dateInfo);
 	}
-
 }
