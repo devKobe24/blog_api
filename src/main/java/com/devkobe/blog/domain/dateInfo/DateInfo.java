@@ -13,6 +13,7 @@ import java.sql.Timestamp;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @NoArgsConstructor
@@ -23,9 +24,11 @@ public class DateInfo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Setter
 	@Column(nullable = false)
 	private Timestamp releaseDate;
 
+	@Setter
 	@Column(nullable = false)
 	private Timestamp modificationDate;
 
@@ -39,14 +42,6 @@ public class DateInfo {
 		this.releaseDate = releaseDate;
 		this.modificationDate = modificationDate;
 		this.posts = posts;
-	}
-
-	public void setReleaseDate(Timestamp releaseDate) {
-		this.releaseDate = releaseDate;
-	}
-
-	public void setModificationDate(Timestamp modificationDate) {
-		this.modificationDate = modificationDate;
 	}
 
 	public void setPosts(Posts posts) {
