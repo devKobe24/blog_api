@@ -22,7 +22,8 @@ public class PostsCreateRequestDto {
 	private String email;
 	private String profileImage;
 
-	@Builder PostsCreateRequestDto(Posts entity) {
+	@Builder
+	public PostsCreateRequestDto(Posts entity) {
 		this.title = entity.getTitle();
 		this.content = entity.getContent();
 		this.nickName = entity.getNickName();
