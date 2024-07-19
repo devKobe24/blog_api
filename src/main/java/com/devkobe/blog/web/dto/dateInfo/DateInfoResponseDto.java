@@ -1,6 +1,6 @@
 package com.devkobe.blog.web.dto.dateInfo;
 
-import com.devkobe.blog.domain.DateInfo;
+import com.devkobe.blog.domain.dateInfo.DateInfo;
 import java.sql.Timestamp;
 import lombok.Getter;
 

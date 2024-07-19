@@ -1,6 +1,6 @@
 package com.devkobe.blog.web.dto.userInfo.update;
 
-import com.devkobe.blog.domain.UserInfo;
+import com.devkobe.blog.domain.userInfo.UserInfo;
 import lombok.Getter;
 
 @Getter

@@ -1,5 +1,6 @@
-package com.devkobe.blog.domain;
+package com.devkobe.blog.domain.dateInfo;
 
+import com.devkobe.blog.domain.posts.Posts;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

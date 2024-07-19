@@ -1,7 +1,7 @@
-package com.devkobe.blog.service;
+package com.devkobe.blog.service.dateInfo;
 
-import com.devkobe.blog.domain.DateInfo;
-import com.devkobe.blog.repository.DateInfoRepository;
+import com.devkobe.blog.domain.dateInfo.DateInfo;
+import com.devkobe.blog.repository.dateInfo.DateInfoRepository;
 import com.devkobe.blog.web.dto.dateInfo.DateInfoResponseDto;
 import java.util.List;
 import java.util.stream.Collectors;

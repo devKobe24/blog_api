@@ -1,7 +1,7 @@
-package com.devkobe.blog.service;
+package com.devkobe.blog.service.userInfo;
 
-import com.devkobe.blog.domain.UserInfo;
-import com.devkobe.blog.repository.UserInfoRepository;
+import com.devkobe.blog.domain.userInfo.UserInfo;
+import com.devkobe.blog.repository.userInfo.UserInfoRepository;
 import com.devkobe.blog.web.dto.userInfo.create.UserInfoCreateRequestDto;
 import com.devkobe.blog.web.dto.userInfo.read.UserInfoReadResponseDto;
 import com.devkobe.blog.web.dto.userInfo.update.UserInfoUpdateRequestDto;

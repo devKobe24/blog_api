@@ -1,6 +1,6 @@
-package com.devkobe.blog.repository;
+package com.devkobe.blog.repository.posts;
 
-import com.devkobe.blog.domain.Posts;
+import com.devkobe.blog.domain.posts.Posts;
 import org.springframework.data.jpa.domain.Specification;
 
 public class PostsSpecification {

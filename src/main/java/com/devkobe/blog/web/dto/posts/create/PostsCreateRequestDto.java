@@ -1,8 +1,8 @@
 package com.devkobe.blog.web.dto.posts.create;
 
-import com.devkobe.blog.domain.DateInfo;
-import com.devkobe.blog.domain.Posts;
-import com.devkobe.blog.domain.UserInfo;
+import com.devkobe.blog.domain.dateInfo.DateInfo;
+import com.devkobe.blog.domain.posts.Posts;
+import com.devkobe.blog.domain.userInfo.UserInfo;
 import java.sql.Timestamp;
 import lombok.Builder;
 import lombok.Getter;

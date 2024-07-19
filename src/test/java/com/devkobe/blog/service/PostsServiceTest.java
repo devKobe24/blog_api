@@ -4,10 +4,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-import com.devkobe.blog.domain.Posts;
-import com.devkobe.blog.domain.UserInfo;
-import com.devkobe.blog.repository.PostsRepository;
-import com.devkobe.blog.repository.UserInfoRepository;
+import com.devkobe.blog.domain.posts.Posts;
+import com.devkobe.blog.domain.userInfo.UserInfo;
+import com.devkobe.blog.repository.posts.PostsRepository;
+import com.devkobe.blog.repository.userInfo.UserInfoRepository;
+import com.devkobe.blog.service.posts.PostsService;
 import com.devkobe.blog.web.dto.posts.PostsSaveRequestDto;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;

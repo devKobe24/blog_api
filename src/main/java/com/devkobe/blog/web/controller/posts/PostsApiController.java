@@ -1,6 +1,6 @@
-package com.devkobe.blog.web.controller;
+package com.devkobe.blog.web.controller.posts;
 
-import com.devkobe.blog.service.PostsService;
+import com.devkobe.blog.service.posts.PostsService;
 import com.devkobe.blog.web.dto.posts.create.PostsCreateResponseDto;
 import com.devkobe.blog.web.dto.posts.delete.PostsDeleteRequestDto;
 import com.devkobe.blog.web.dto.posts.delete.PostsDeleteResponseDto;

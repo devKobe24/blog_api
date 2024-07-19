@@ -1,5 +1,7 @@
-package com.devkobe.blog.domain;
+package com.devkobe.blog.domain.posts;
 
+import com.devkobe.blog.domain.userInfo.UserInfo;
+import com.devkobe.blog.domain.dateInfo.DateInfo;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;

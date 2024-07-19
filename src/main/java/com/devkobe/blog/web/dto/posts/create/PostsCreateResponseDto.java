@@ -1,6 +1,6 @@
 package com.devkobe.blog.web.dto.posts.create;
 
-import com.devkobe.blog.domain.Posts;
+import com.devkobe.blog.domain.posts.Posts;
 import lombok.Builder;
 import lombok.Getter;
 

@@ -1,5 +1,6 @@
-package com.devkobe.blog.domain;
+package com.devkobe.blog.domain.userInfo;
 
+import com.devkobe.blog.domain.posts.Posts;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

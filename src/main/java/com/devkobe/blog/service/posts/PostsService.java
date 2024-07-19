@@ -1,10 +1,10 @@
-package com.devkobe.blog.service;
+package com.devkobe.blog.service.posts;
 
-import com.devkobe.blog.domain.Posts;
-import com.devkobe.blog.domain.UserInfo;
-import com.devkobe.blog.repository.PostsRepository;
-import com.devkobe.blog.repository.PostsSpecification;
-import com.devkobe.blog.repository.UserInfoRepository;
+import com.devkobe.blog.domain.posts.Posts;
+import com.devkobe.blog.domain.userInfo.UserInfo;
+import com.devkobe.blog.repository.posts.PostsRepository;
+import com.devkobe.blog.repository.posts.PostsSpecification;
+import com.devkobe.blog.repository.userInfo.UserInfoRepository;
 import com.devkobe.blog.web.dto.posts.create.PostsCreateResponseDto;
 import com.devkobe.blog.web.dto.posts.delete.PostsDeleteResponseDto;
 import com.devkobe.blog.web.dto.posts.read.PostsReadRequestDto;
