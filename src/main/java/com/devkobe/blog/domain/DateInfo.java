@@ -40,6 +40,14 @@ public class DateInfo {
 		this.posts = posts;
 	}
 
+	public void setReleaseDate(Timestamp releaseDate) {
+		this.releaseDate = releaseDate;
+	}
+
+	public void setModificationDate(Timestamp modificationDate) {
+		this.modificationDate = modificationDate;
+	}
+
 	public void setPosts(Posts posts) {
 		this.posts = posts;
 		if (posts.getDateInfo() != this) {
