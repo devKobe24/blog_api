@@ -9,11 +9,11 @@ import lombok.Getter;
 @Getter
 public class PostListReadRequestDto {
 
-	private String uuid;
+	private Long postId;
 
 	public PostListReadRequestDto(
-		String uuid
+		Long postId
 	) {
-		this.uuid = uuid;
+		this.postId = postId;
 	}
 }

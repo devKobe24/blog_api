@@ -10,11 +10,11 @@ import lombok.Getter;
 @Getter
 public class PostListCreateResponseDto {
 
-	private UUID uuid;
+//	private UUID uuid;
 	private List<PostCreateResponseDto> posts;
 
 	public PostListCreateResponseDto(PostList entity) {
-		this.uuid = entity.getUuid();
+//		this.uuid = entity.getUuid();
 		this.posts = entity
 			.getPosts()
 			.stream()

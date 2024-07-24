@@ -8,12 +8,12 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class PostListDeleteResponseDto {
-	private String uuid;
+	private Long postId;
 	private String status;
 
 	@Builder
-	public PostListDeleteResponseDto(String uuid, String status) {
-		this.uuid = uuid;
+	public PostListDeleteResponseDto(Long postId, String status) {
+		this.postId = postId;
 		this.status = status;
 	}
 }

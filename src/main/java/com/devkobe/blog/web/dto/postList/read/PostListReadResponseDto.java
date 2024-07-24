@@ -11,11 +11,13 @@ import java.util.List;
 
 @Getter
 public class PostListReadResponseDto {
-    private UUID uuid;
+//    private UUID uuid;
+    private Long postId;
     private List<PostReadResponseDto> posts;
 
     public PostListReadResponseDto(PostList entity) {
-        this.uuid = entity.getUuid();
+//        this.uuid = entity.getUuid();
+        this.postId = entity.getPostId();
         this.posts = entity
             .getPosts()
             .stream()

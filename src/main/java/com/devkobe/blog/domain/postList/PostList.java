@@ -22,9 +22,9 @@ import lombok.NoArgsConstructor;
 public class PostList {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false, unique = true)
-    private UUID uuid;
+    private Long postId;
 
     @OneToMany(mappedBy = "postList", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Post> posts;
@@ -47,11 +47,11 @@ public class PostList {
             return false;
         }
         PostList postList = (PostList) o;
-        return Objects.equals(uuid, postList.uuid);
+        return Objects.equals(postId, postList.postId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(uuid);
+        return Objects.hashCode(postId);
     }
 }

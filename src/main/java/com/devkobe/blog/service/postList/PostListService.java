@@ -60,9 +60,9 @@ public class PostListService {
 
     @Transactional(readOnly = true)
     public PostListReadResponseDto findById(PostListReadRequestDto requestDto) {
-        UUID uuid = UUID.fromString(requestDto.getUuid());
-        PostList postList = postListRepository.findById(uuid)
-            .orElseThrow(() -> new RuntimeException("PostList not found with uuid =======>>> " + uuid));
+        Long postId = requestDto.getPostId();
+        PostList postList = postListRepository.findById(postId)
+            .orElseThrow(() -> new RuntimeException("PostList not found with postId =======>>> " + postId));
 
         return new PostListReadResponseDto(postList);
     }
@@ -70,9 +70,9 @@ public class PostListService {
     // UPDATE
     @Transactional
     public PostListUpdateResponseDto update(PostListUpdateRequestDto requestDto) {
-        UUID uuid = UUID.fromString(requestDto.getUuid());
-        PostList postList = postListRepository.findById(uuid)
-            .orElseThrow(() -> new RuntimeException("PostList not found with uuid =======>>> " + uuid));
+        Long postId = requestDto.getPostId();
+        PostList postList = postListRepository.findById(postId)
+            .orElseThrow(() -> new RuntimeException("PostList not found with postId =======>>> " + postId));
 
         // Map PostCreateRequestDto to Post entity
         List<Post> updatedPosts = requestDto
@@ -93,15 +93,15 @@ public class PostListService {
     public PostListDeleteResponseDto delete(PostListDeleteRequestDto requestDto) {
         String successMessage = "SUCCESS TO DELETE";
         String failMessage = "FAIL TO DELETE";
+        Long postId = requestDto.getPostId();
 
         try {
-            UUID uuid = UUID.fromString(requestDto.getUuid());
-            PostList postList = postListRepository.findById(uuid)
-                .orElseThrow(() -> new RuntimeException("PostList not found with uuid =======>>> " + uuid));
+            PostList postList = postListRepository.findById(postId)
+                .orElseThrow(() -> new RuntimeException("PostList not found with postId =======>>> " + postId));
             postListRepository.delete(postList);
-            return new PostListDeleteResponseDto(requestDto.getUuid(), successMessage);
+            return new PostListDeleteResponseDto(postId, successMessage);
         } catch (Exception e) {
-            return new PostListDeleteResponseDto(requestDto.getUuid(), failMessage);
+            return new PostListDeleteResponseDto(postId, failMessage);
         }
     }
 

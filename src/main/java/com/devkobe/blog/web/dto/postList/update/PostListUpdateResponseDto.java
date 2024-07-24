@@ -14,11 +14,11 @@ import lombok.Getter;
 @Getter
 public class PostListUpdateResponseDto {
 
-	private UUID uuid;
+	private Long postId;
 	private List<PostReadResponseDto> posts;
 
 	public PostListUpdateResponseDto(PostList entity) {
-		this.uuid = entity.getUuid();
+		this.postId = entity.getPostId();
 		this.posts = entity
 			.getPosts()
 			.stream()

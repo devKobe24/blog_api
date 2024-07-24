@@ -13,15 +13,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PostListUpdateRequestDto {
 
-	private String uuid;
+	private Long postId;
 	private List<PostCreateRequestDto> posts;
 
 	@Builder
 	public PostListUpdateRequestDto(
-		String uuid,
+		Long postId,
 		List<PostCreateRequestDto> posts
 	) {
-		this.uuid = uuid;
+		this.postId = postId;
 		this.posts = posts;
 	}
 }

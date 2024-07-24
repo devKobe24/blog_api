@@ -37,9 +37,9 @@ public class PostListController {
     }
 
     // READ
-   @GetMapping("/{uuid}")
-   public ResponseEntity<PostListReadResponseDto> findById(@PathVariable String uuid) {
-        PostListReadRequestDto requestDto = new PostListReadRequestDto(uuid);
+   @GetMapping("/{postId}")
+   public ResponseEntity<PostListReadResponseDto> findById(@PathVariable Long postId) {
+        PostListReadRequestDto requestDto = new PostListReadRequestDto(postId);
         PostListReadResponseDto responseDto = postListService.findById(requestDto);
         return ResponseEntity.ok(responseDto);
    }
