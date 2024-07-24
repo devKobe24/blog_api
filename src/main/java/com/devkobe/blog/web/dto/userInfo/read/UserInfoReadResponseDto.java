@@ -15,7 +15,7 @@ public class UserInfoReadResponseDto {
 
 	@Builder
 	public UserInfoReadResponseDto(UserInfo entity) {
-		this.id = entity.getId();
+		this.id = entity.getUserInfoId();
 		this.name = entity.getName();
 		this.email = entity.getEmail();
 		this.profileImage = entity.getProfileImage();

@@ -1,15 +1,11 @@
 package com.devkobe.blog.domain.userInfo;
 
-import com.devkobe.blog.domain.posts.Posts;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,10 +16,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 public class UserInfo {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(nullable = false, updatable = false, unique = true)
+	private Long userInfoId;
 
 	@Column(nullable = false)
 	private String name;
@@ -36,9 +32,6 @@ public class UserInfo {
 
 	@Column(nullable = false)
 	private String nickName;
-
-	@OneToMany(mappedBy = "userInfo", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Posts> posts = new ArrayList<>();
 
 	@Builder
 	public UserInfo(String name, String email, String profileImage, String nickName) {
@@ -53,5 +46,22 @@ public class UserInfo {
 		this.email = email;
 		this.profileImage = profileImage;
 		this.nickName = nickName;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		UserInfo userInfo = (UserInfo) o;
+		return Objects.equals(userInfoId, userInfo.userInfoId);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(userInfoId);
 	}
 }

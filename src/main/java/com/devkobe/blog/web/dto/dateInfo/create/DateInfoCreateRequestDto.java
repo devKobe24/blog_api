@@ -1,9 +1,8 @@
 package com.devkobe.blog.web.dto.dateInfo.create;
 
 import com.devkobe.blog.domain.dateInfo.DateInfo;
-import com.devkobe.blog.domain.posts.Posts;
 import jakarta.validation.constraints.NotNull;
-import java.sql.Timestamp;
+import java.time.OffsetDateTime;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,27 +13,21 @@ import lombok.NoArgsConstructor;
 public class DateInfoCreateRequestDto {
 
 	@NotNull
-	private Timestamp releaseDate;
+	private OffsetDateTime releaseDate;
 
 	@NotNull
-	private Timestamp modificationDate;
-
-	@NotNull
-	private Posts posts;
+	private OffsetDateTime modificationDate;
 
 	@Builder
-	public DateInfoCreateRequestDto(DateInfo entity) {
-		this.releaseDate = entity.getReleaseDate();
-		this.modificationDate = entity.getModificationDate();
-		this.posts = entity.getPosts();
+	public DateInfoCreateRequestDto(OffsetDateTime releaseDate, OffsetDateTime modificationDate) {
+		this.releaseDate = releaseDate;
+		this.modificationDate = modificationDate;
 	}
 
-	public DateInfo toEntity(DateInfo dateInfo) {
-		dateInfo = DateInfo.builder()
-		                   .releaseDate(new Timestamp(System.currentTimeMillis()))
-		                   .modificationDate(new Timestamp(System.currentTimeMillis()))
-		                   .posts(posts)
-		                   .build();
-		return dateInfo;
+	public DateInfo toEntity() {
+		return DateInfo.builder()
+		               .releaseDate(this.releaseDate)
+		               .modificationDate(this.modificationDate)
+		               .build();
 	}
 }

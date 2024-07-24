@@ -12,7 +12,7 @@ public class UserInfoUpdateResponseDto {
 	private String nickName;
 
 	public UserInfoUpdateResponseDto(UserInfo entity) {
-		this.id = entity.getId();
+		this.id = entity.getUserInfoId();
 		this.name = entity.getName();
 		this.email = entity.getEmail();
 		this.profileIamge = entity.getProfileImage();

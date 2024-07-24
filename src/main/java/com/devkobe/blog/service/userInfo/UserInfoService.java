@@ -22,7 +22,7 @@ public class UserInfoService {
 	public Long save(UserInfoCreateRequestDto requestDto) {
 		UserInfo userInfo = requestDto.toEntity();
 		userInfoRepository.save(userInfo);
-		return userInfo.getId();
+		return userInfo.getUserInfoId();
 	}
 
 	@Transactional(readOnly = true)

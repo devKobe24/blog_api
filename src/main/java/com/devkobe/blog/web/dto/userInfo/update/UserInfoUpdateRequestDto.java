@@ -13,7 +13,12 @@ public class UserInfoUpdateRequestDto {
 	private String nickName;
 
 	@Builder
-	public UserInfoUpdateRequestDto(String name, String email, String profileImage, String nickName) {
+	public UserInfoUpdateRequestDto(
+			String name,
+			String email,
+			String profileImage,
+			String nickName
+	) {
 		this.name = name;
 		this.email = email;
 		this.profileImage = profileImage;

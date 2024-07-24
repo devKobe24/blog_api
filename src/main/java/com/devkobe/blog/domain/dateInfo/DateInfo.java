@@ -1,53 +1,60 @@
 package com.devkobe.blog.domain.dateInfo;
 
-import com.devkobe.blog.domain.posts.Posts;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import java.sql.Timestamp;
+import java.time.OffsetDateTime;
+import java.util.Objects;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @Entity
 public class DateInfo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Column(nullable = false, updatable = false, unique = true)
+	private Long dateInfoId;
 
-	@Setter
 	@Column(nullable = false)
-	private Timestamp releaseDate;
+	private OffsetDateTime releaseDate;
 
-	@Setter
 	@Column(nullable = false)
-	private Timestamp modificationDate;
-
-	@OneToOne
-	@JoinColumn(name = "posts_id", nullable = false)
-	@JsonBackReference
-	private Posts posts;
+	private OffsetDateTime modificationDate;
 
 	@Builder
-	public DateInfo(Timestamp releaseDate, Timestamp modificationDate, Posts posts) {
+	public DateInfo(OffsetDateTime releaseDate, OffsetDateTime modificationDate) {
 		this.releaseDate = releaseDate;
 		this.modificationDate = modificationDate;
-		this.posts = posts;
 	}
 
-	public void setPosts(Posts posts) {
-		this.posts = posts;
-		if (posts.getDateInfo() != this) {
-			posts.setDateInfo(this);
+	public void update(OffsetDateTime releaseDate, OffsetDateTime modificationDate) {
+		this.releaseDate = releaseDate;
+		this.modificationDate = modificationDate;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
 		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		DateInfo dateInfo = (DateInfo) o;
+		return Objects.equals(dateInfoId, dateInfo.dateInfoId);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dateInfoId);
 	}
 }
