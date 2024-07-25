@@ -4,7 +4,13 @@ import com.devkobe.blog.domain.dateInfo.DateInfo;
 import com.devkobe.blog.domain.post.Post;
 import com.devkobe.blog.domain.postInfo.PostInfo;
 import com.devkobe.blog.domain.userInfo.UserInfo;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Setter
+@Getter
+@NoArgsConstructor
 public class PostReadResponseDto {
 
     private Long postId;
