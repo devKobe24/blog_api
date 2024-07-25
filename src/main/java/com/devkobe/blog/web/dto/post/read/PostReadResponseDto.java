@@ -4,6 +4,7 @@ import com.devkobe.blog.domain.dateInfo.DateInfo;
 import com.devkobe.blog.domain.post.Post;
 import com.devkobe.blog.domain.postInfo.PostInfo;
 import com.devkobe.blog.domain.userInfo.UserInfo;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,9 +14,16 @@ import lombok.Setter;
 @NoArgsConstructor
 public class PostReadResponseDto {
 
+    @JsonProperty("postId")
     private Long postId;
+
+    @JsonProperty("postInfo")
     private PostInfo postInfo;
+
+    @JsonProperty("userInfo")
     private UserInfo userInfo;
+
+    @JsonProperty("dateInfo")
     private DateInfo dateInfo;
 
     public PostReadResponseDto(Post entity) {
