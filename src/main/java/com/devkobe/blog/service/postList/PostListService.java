@@ -43,6 +43,7 @@ public class PostListService {
             post.setPostInfo(mergePostInfo(post.getPostInfo()));
             post.setUserInfo(mergeUserInfo(post.getUserInfo()));
             post.setDateInfo(mergeDateInfo(post.getDateInfo()));
+            post.setPostList(postList); // PostList 설정
         });
 
         postListRepository.save(postList);
