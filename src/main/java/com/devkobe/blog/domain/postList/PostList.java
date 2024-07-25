@@ -65,4 +65,9 @@ public class PostList {
         posts.add(post);
         post.setPostList(this);
     }
+
+    public void removePost(Post post) {
+        posts.remove(post);
+        post.setPostList(null);
+    }
 }
