@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import lombok.Builder;
@@ -31,8 +33,20 @@ public class DateInfo {
 
 	@Builder
 	public DateInfo(LocalDateTime releaseDate, LocalDateTime modificationDate) {
-		this.releaseDate = releaseDate;
-		this.modificationDate = modificationDate;
+		this.releaseDate = releaseDate != null ? releaseDate : LocalDateTime.now();
+		this.modificationDate = modificationDate != null ? modificationDate : LocalDateTime.now();
+	}
+
+	@PrePersist
+	public void onPrePersist() {
+		LocalDateTime now = LocalDateTime.now();
+		this.releaseDate = now;
+		this.modificationDate = now;
+	}
+
+	@PreUpdate
+	public void onPreUpdate() {
+		this.modificationDate = LocalDateTime.now();
 	}
 
 	public void update(LocalDateTime releaseDate, LocalDateTime modificationDate) {

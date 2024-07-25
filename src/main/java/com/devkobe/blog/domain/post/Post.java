@@ -62,7 +62,7 @@ public class Post {
 		this.postId = postId;
 		this.postInfo = postInfo;
 		this.userInfo = userInfo;
-		this.dateInfo = dateInfo;
+		this.dateInfo = new DateInfo(); // DateInfo 객체를 자동으로 초기화
 		this.postList = postList;
 	}
 

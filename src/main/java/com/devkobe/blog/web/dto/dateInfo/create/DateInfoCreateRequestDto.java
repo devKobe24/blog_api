@@ -3,7 +3,6 @@ package com.devkobe.blog.web.dto.dateInfo.create;
 import com.devkobe.blog.domain.dateInfo.DateInfo;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,8 +26,8 @@ public class DateInfoCreateRequestDto {
 
 	public DateInfo toEntity() {
 		return DateInfo.builder()
-		               .releaseDate(this.releaseDate)
-		               .modificationDate(this.modificationDate)
+		               .releaseDate(this.releaseDate != null ? this.releaseDate : LocalDateTime.now())
+		               .modificationDate(this.modificationDate != null ? this.modificationDate : LocalDateTime.now())
 		               .build();
 	}
 }

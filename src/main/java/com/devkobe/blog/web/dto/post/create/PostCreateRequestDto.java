@@ -16,22 +16,20 @@ public class PostCreateRequestDto {
     private Long postId;
     private PostInfo postInfo;
     private UserInfo userInfo;
-    private DateInfo dateInfo;
 
     @Builder
     public PostCreateRequestDto(
         Long postId,
         PostInfo postInfo,
-        UserInfo userInfo,
-        DateInfo dateInfo
+        UserInfo userInfo
     ) {
         this.postId = postId;
         this.postInfo = postInfo;
         this.userInfo = userInfo;
-        this.dateInfo = dateInfo;
     }
 
     public Post toEntity() {
+        DateInfo dateInfo = new DateInfo(); // DateInfo 객체를 초기화하여 자동 날짜 설정을 적용
         return Post.builder()
                    .postInfo(postInfo)
                    .userInfo(userInfo)
@@ -45,7 +43,7 @@ public class PostCreateRequestDto {
                         .postId(postId)
                         .postInfo(service.mergePostInfo(postInfo))
                         .userInfo(service.mergeUserInfo(userInfo))
-                        .dateInfo(service.mergeDateInfo(dateInfo))
+                        .dateInfo(service.mergeDateInfo(new DateInfo())) // DateInfo 객체 초기화
                         .build();
         return post;
     }
