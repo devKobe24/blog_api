@@ -19,7 +19,6 @@ import com.devkobe.blog.web.dto.postList.read.PostListReadResponseDto;
 import com.devkobe.blog.web.dto.postList.update.PostListUpdateRequestDto;
 import com.devkobe.blog.web.dto.postList.update.PostListUpdateResponseDto;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -55,15 +54,15 @@ public class PostListService {
     public List<PostListReadResponseDto> findAll() {
         List<PostList> postList = postListRepository.findAll();
         return postList.stream()
-            .map(PostListReadResponseDto::new)
-            .collect(Collectors.toList());
+                       .map(PostListReadResponseDto::new)
+                       .collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
     public PostListReadResponseDto findById(PostListReadRequestDto requestDto) {
         Long postId = requestDto.getPostId();
         PostList postList = postListRepository.findById(postId)
-            .orElseThrow(() -> new RuntimeException("PostList not found with postId =======>>> " + postId));
+                                              .orElseThrow(() -> new RuntimeException("PostList not found with postId =======>>> " + postId));
 
         return new PostListReadResponseDto(postList);
     }
@@ -73,7 +72,7 @@ public class PostListService {
     public PostListUpdateResponseDto update(PostListUpdateRequestDto requestDto) {
         Long postId = requestDto.getPostId();
         PostList postList = postListRepository.findById(postId)
-            .orElseThrow(() -> new RuntimeException("PostList not found with postId =======>>> " + postId));
+                                              .orElseThrow(() -> new RuntimeException("PostList not found with postId =======>>> " + postId));
 
         // Map PostCreateRequestDto to Post entity
         List<Post> updatedPosts = requestDto
@@ -98,7 +97,7 @@ public class PostListService {
 
         try {
             PostList postList = postListRepository.findById(postId)
-                .orElseThrow(() -> new RuntimeException("PostList not found with postId =======>>> " + postId));
+                                                  .orElseThrow(() -> new RuntimeException("PostList not found with postId =======>>> " + postId));
             postListRepository.delete(postList);
             return new PostListDeleteResponseDto(postId, successMessage);
         } catch (Exception e) {
