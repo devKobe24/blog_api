@@ -15,6 +15,7 @@ import java.util.UUID;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @NoArgsConstructor
@@ -26,12 +27,17 @@ public class PostList {
     @Column(nullable = false, updatable = false, unique = true)
     private Long postId;
 
+    @Setter
+    @Column(nullable = false, unique = true)
+    private UUID uuid = UUID.randomUUID();
+
     @OneToMany(mappedBy = "postList", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Post> posts;
 
     @Builder
     public PostList(List<Post> posts) {
         this.posts = posts != null ? posts : new ArrayList<>();
+        this.uuid = UUID.randomUUID();
     }
 
     public void update (List<Post> posts) {
