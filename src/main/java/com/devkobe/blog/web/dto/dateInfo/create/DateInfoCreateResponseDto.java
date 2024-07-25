@@ -2,6 +2,7 @@ package com.devkobe.blog.web.dto.dateInfo.create;
 
 import com.devkobe.blog.domain.dateInfo.DateInfo;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,8 +13,8 @@ import lombok.NoArgsConstructor;
 public class DateInfoCreateResponseDto {
 
 	private Long id;
-	private OffsetDateTime releaseDate;
-	private OffsetDateTime modificationDate;
+	private LocalDateTime releaseDate;
+	private LocalDateTime modificationDate;
 
 	@Builder
 	public DateInfoCreateResponseDto(DateInfo entity) {

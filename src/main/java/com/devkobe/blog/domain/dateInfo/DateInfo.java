@@ -5,8 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import java.sql.Timestamp;
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,18 +24,18 @@ public class DateInfo {
 	private Long dateInfoId;
 
 	@Column(nullable = false)
-	private OffsetDateTime releaseDate;
+	LocalDateTime releaseDate;
 
 	@Column(nullable = false)
-	private OffsetDateTime modificationDate;
+	LocalDateTime modificationDate;
 
 	@Builder
-	public DateInfo(OffsetDateTime releaseDate, OffsetDateTime modificationDate) {
+	public DateInfo(LocalDateTime releaseDate, LocalDateTime modificationDate) {
 		this.releaseDate = releaseDate;
 		this.modificationDate = modificationDate;
 	}
 
-	public void update(OffsetDateTime releaseDate, OffsetDateTime modificationDate) {
+	public void update(LocalDateTime releaseDate, LocalDateTime modificationDate) {
 		this.releaseDate = releaseDate;
 		this.modificationDate = modificationDate;
 	}
