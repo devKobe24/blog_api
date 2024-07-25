@@ -1,6 +1,5 @@
 package com.devkobe.blog.domain.post;
 
-import com.devkobe.blog.domain.BaseTimeEntity;
 import com.devkobe.blog.domain.dateInfo.DateInfo;
 import com.devkobe.blog.domain.postInfo.PostInfo;
 import com.devkobe.blog.domain.postList.PostList;
@@ -25,7 +24,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-public class Post extends BaseTimeEntity {
+public class Post {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
