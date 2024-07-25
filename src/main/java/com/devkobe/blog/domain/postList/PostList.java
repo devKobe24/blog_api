@@ -54,4 +54,9 @@ public class PostList {
     public int hashCode() {
         return Objects.hashCode(postId);
     }
+
+    public void addPost(Post post) {
+        posts.add(post);
+        post.setPostList(this);
+    }
 }
