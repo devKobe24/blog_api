@@ -1,9 +1,9 @@
 package com.devkobe.blog.web.dto.post.read;
 
-import com.devkobe.blog.domain.dateInfo.DateInfo;
 import com.devkobe.blog.domain.post.Post;
-import com.devkobe.blog.domain.postInfo.PostInfo;
-import com.devkobe.blog.domain.userInfo.UserInfo;
+import com.devkobe.blog.web.dto.dateInfo.DateInfoDto;
+import com.devkobe.blog.web.dto.postInfo.PostInfoDto;
+import com.devkobe.blog.web.dto.userInfo.UserInfoDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,18 +18,18 @@ public class PostReadResponseDto {
     private Long postId;
 
     @JsonProperty("postInfo")
-    private PostInfo postInfo;
+    private PostInfoDto postInfo;
 
     @JsonProperty("userInfo")
-    private UserInfo userInfo;
+    private UserInfoDto userInfo;
 
     @JsonProperty("dateInfo")
-    private DateInfo dateInfo;
+    private DateInfoDto dateInfo;
 
     public PostReadResponseDto(Post entity) {
         this.postId = entity.getPostId();
-        this.postInfo = entity.getPostInfo();
-        this.userInfo = entity.getUserInfo();
-        this.dateInfo = entity.getDateInfo();
+        this.postInfo = new PostInfoDto(entity.getPostInfo());
+        this.userInfo = new UserInfoDto(entity.getUserInfo());
+        this.dateInfo = new DateInfoDto(entity.getDateInfo());
     }
 }
